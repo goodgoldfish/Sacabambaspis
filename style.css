@@ -55,7 +55,7 @@ div.sacaba-face{
   text-align: center;
   position: fixed;
   bottom: 0;
-  border-radius:calc(50%) calc(50%) 0 0;
+  border-radius: 100% / calc(50%) calc(50%) 0 0;
 }
 
 div.sacaba-eyes {

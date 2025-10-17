@@ -1,0 +1,100 @@
+@keyframes blink {
+  0% {
+    transform: scale(1, 0.01);
+  }
+  5% {
+    transform: scale(1, 1);
+  }  
+  100% {
+    transform: scale(1, 1);
+  }
+}
+
+@keyframes twinkling {
+  5% {
+    left:calc(var(--pupil_size) * var(--eye_white_ratio));
+  }
+  10%, 35% {
+    left:0;
+  }
+  38%, 65% {
+    left:calc(var(--pupil_size) * var(--eye_white_ratio));
+  }
+  70%, 95% {
+    left:calc(var(--pupil_size) * 2 * var(--eye_white_ratio));
+  } 
+  100% {
+    left:calc(var(--pupil_size) * var(--eye_white_ratio));
+  }
+}
+
+:root {
+  --eye_size:100px;
+  --pupil_size: calc(var(--eye_size) / 15);
+  --eye_white_ratio: 1.5;
+  --sclera_sive: 3px;
+  --mouth_width: calc(var(--eye_size) * 0.8);
+  --mouth_height: calc(var(--eye_size) * 0.5);
+}
+
+body{
+  margin: 0;
+  text-align: center;
+}
+div.sacaba-body{
+  background-color:rgb(205,204,198);
+  width: 100%;
+  height: 100%;
+  top: 0;
+  position: fixed;
+}
+div.sacaba-face{
+  background-color:rgb(255,255,255);
+  width: 100%;
+  height: 50%;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  border-radius:calc(50%) calc(50%) 0 0;
+}
+
+div.sacaba-eyes {
+  background-color: white;
+  width: var(--eye_size);
+  height: var(--eye_size);
+  position: absolute;
+  top: calc(50% - var(--eye_size));
+  border:var(--pupil_size) solid black;
+  border-radius: 50%;
+  animation: blink 3s ease-in-out infinite 1s; 
+}
+/* whites of eyes */
+div.sacaba-eyes:before {
+  content:'';
+  background-color: black;
+  width: calc(var(--eye_size) - 2 * var(--eye_white_ratio) * var(--pupil_size));
+  height: calc(var(--eye_size) - 2 * var(--eye_white_ratio) * var(--pupil_size));
+  position: absolute;
+  top:calc(var(--pupil_size) * var(--eye_white_ratio));
+  left:calc(var(--pupil_size) * var(--eye_white_ratio));
+  border-radius: 50%;
+  /* animation: twinkling 5s linear  infinite; */
+}
+div.sacaba-left-eye{
+  left: calc(50% - 2.5 * var(--eye_size))
+}
+
+div.sacaba-right-eye{
+  right: calc(50% - 2.5 * var(--eye_size))
+}
+div.sacaba-mouth {
+  width: 0;
+  height: 0;
+  position:absolute;
+  top: calc(50%);
+  left:calc(50% - var(--mouth_width));
+  border-style: solid;
+  border-width: var(--mouth_height) var(--mouth_width) 0 var(--mouth_width);
+  border-color: black transparent transparent transparent;
+  border-radius:3px;
+}
